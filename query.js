@@ -43,7 +43,8 @@ const questions = [
         };
         let filename = __dirname+"/db/"+response.dept + " " + response.class + " " + response.section + " " + response.restricted;
         if ((response.restricted ? classData.course_seats.total : classData.course_seats.general) == "") {
-            if (!fs.existsSync(filename)) console.log(`Sorry but I couldn't check the number of seats available for ${chalk.cyan(response.dept + " " + response.class + " " + response.section)}.`);
+            if (browser.text('div.content > strong') === "Note: The remaining seats in this section are only available through a Standard Timetable (STT)") console.log(`${chalk.cyan(response.dept + " " + response.class + " " + response.section)} is only available through a ${chalk.yellow("Standard Timetable (STT)")}.`);
+            else if (!fs.existsSync(filename)) console.log(`Sorry but I couldn't check the number of seats available for ${chalk.cyan(response.dept + " " + response.class + " " + response.section)}.`);
             else {
                 fs.readFile(filename, "utf-8", (err, data) => {
                     let lastSaved = Number(data.split(" ")[data.split(" ").length-1]);
