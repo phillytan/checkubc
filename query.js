@@ -37,10 +37,8 @@ const questions = [
     Browser.visit(test1, (err, browser) => {
         let classData = {
             course_seats: {
-                total: browser.text('div.content > table:nth-of-type(4) > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > strong'),
-                registered: browser.text('div.content > table:nth-of-type(4) > tbody > tr:nth-of-type(2) > td:nth-of-type(2) > strong'),
-                general: browser.text('div.content > table:nth-of-type(4) > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > strong'),
-                restricted: browser.text('div.content > table:nth-of-type(4) > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > strong'),
+                total: ((browser.text('div.content > table:nth-of-type(4) > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > strong') === "") ? browser.text('div.content > table:nth-of-type(3) > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > strong') : browser.text('div.content > table:nth-of-type(4) > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > strong')),
+                general: ((browser.text('div.content > table:nth-of-type(4) > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > strong') === "") ? browser.text('div.content > table:nth-of-type(3) > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > strong') : browser.text('div.content > table:nth-of-type(4) > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > strong')),
             }
         };
         let filename = __dirname+"/db/"+response.dept + " " + response.class + " " + response.section + " " + response.restricted;
