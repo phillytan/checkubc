@@ -1,0 +1,23 @@
+{
+  "name": "ubc-course-scrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "checkubc": "./app.js"
+  },
+  "bin": {
+    "queryubc": "./query.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "prompts": "^2.1.0",
+    "zombie": "^6.1.4"
+  }
+}
